@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-	codeHandle: 'LOCAL',
-	defaultObjectPropertyUnknownValue: 'DEFAULT_UNKNOWN_VALUE'
+	codeHandle: 'DEVELOPMENT',
+	defaultObjectPropertyUnknownValue: 'Unknown'
 };
 
 /*
