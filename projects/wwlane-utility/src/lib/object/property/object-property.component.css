@@ -1,0 +1,11 @@
+li {
+	list-style-type:none;
+}
+
+:host.testClass {
+	color: red;
+}
+
+.blahbiblah {
+	color: orange;
+}
