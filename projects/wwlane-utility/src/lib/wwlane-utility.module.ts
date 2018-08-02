@@ -3,7 +3,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { WwLaneCoreUtilityModule } from 'wwlane-core-utility';
 
-import { DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE } from './config/config';
+import { DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE, ENVIRONMENT_CODE_HANDLE } from './config/config';
 
 import { LoadingIfDirective } from './directive/loading-if.directive';
 import { ImportantClassDirective } from './directive/important-class.directive';
@@ -39,6 +39,10 @@ export class WwLaneUtilityModule {
 				{
 					provide: DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE,
 					useValue: environment.defaultObjectPropertyUnknownValue
+				},
+				{
+					provide: ENVIRONMENT_CODE_HANDLE,
+					useValue: environment.codeHandle
 				}
 			]
 		};

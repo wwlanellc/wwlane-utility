@@ -149,7 +149,7 @@
 			"root": "projects/wwlane-utility",
 			"sourceRoot": "projects/wwlane-utility/src",
 			"projectType": "library",
-			"prefix": "wwl-util",
+			"prefix": "wwl",
 			"architect": {
 				"build": {
 					"builder": "@angular-devkit/build-ng-packagr:build",

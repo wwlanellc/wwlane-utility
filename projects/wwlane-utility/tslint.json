@@ -4,13 +4,13 @@
 				"directive-selector": [
 						true,
 						"attribute",
-						"wwlUtil",
+						"wwl",
 						"camelCase"
 				],
 				"component-selector": [
 						true,
 						"element",
-						"wwl-util",
+						"wwl",
 						"kebab-case"
 				]
 		}

@@ -7,7 +7,6 @@ import { DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE } from '../../config/config';
 export class ObjectPropertyService {
 	private defaultUnknownValue = 'Unknown';
 
-	// constructor(@Inject(DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE) systemDefaultUknownValue: string) {
 	constructor(@Inject(DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE) systemDefaultUknownValue: string, private coreObjectPropertyService: CoreObjectPropertyService) {
 			if (systemDefaultUknownValue !== undefined) {
 			this.defaultUnknownValue = systemDefaultUknownValue;

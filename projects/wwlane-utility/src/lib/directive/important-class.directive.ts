@@ -5,11 +5,11 @@ import { CssService } from '../style/css/css.service';
 
 
 @Directive({
-	selector: '[wwlUtilImportantClass]',
+	selector: '[wwlImportantClass]',
 })
 export class ImportantClassDirective implements OnInit {
 	@Input() id?: string;
-	@Input() wwlUtilImportantClass: string;
+	@Input() wwlImportantClass: string;
 	styleNode: HTMLStyleElement;
 
 	constructor(private element: ElementRef, private cssService: CssService) {
@@ -19,7 +19,7 @@ export class ImportantClassDirective implements OnInit {
 	ngOnInit() {
 		this.id = this.cssService.ensureElementHasId(this.element, this.id);
 
-		const importantClassNames: string[] = this.cssService.parseCssClassList(this.wwlUtilImportantClass);
+		const importantClassNames: string[] = this.cssService.parseCssClassList(this.wwlImportantClass);
 
 		const cssClasses: CssClass[] = this.cssService.findCssClasses(importantClassNames);
 

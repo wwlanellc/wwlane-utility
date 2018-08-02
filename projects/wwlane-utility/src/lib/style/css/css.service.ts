@@ -1,48 +1,41 @@
-import { Injectable, ElementRef, Renderer2, RendererFactory2 } from '@angular/core';
+import { Injectable, ElementRef, Renderer2, RendererFactory2, Inject } from '@angular/core';
 
 import { CssClass } from './css-class';
+import { ENVIRONMENT_CODE_HANDLE, ENVIRONMENT_CODE_HANDLE_LOCAL } from '../../config/config';
 
 /**
  * Service which contains functions related to Cascading Style Sheets
  *
  * @export
- * @class CssService
  */
 @Injectable()
 export class CssService {
 	/**
 	 * A counter to ensure any new ids assigned to elements are unique
 	 *
-	 * @private
-	 * @type {number}
 	 * @memberof CssService
 	 */
-	private nextId: number = Math.floor(Math.random() * 10000000);
+	private nextId: number;
 
 	/**
 	 * Combined with nextId variable
 	 *
-	 * @private
-	 * @type {string}
 	 * @memberof CssService
 	 */
-	private ID_PREFIX = 'wwlUtilCss_';
+	private ID_PREFIX = 'wwlCss_';
 
 	/**
-	 * Replacement string used to do replacements in Regular Expressions. Used instead of loading an sprintf or similar library
+	 * Replacement string used to do replacements in Regular Expressions.
+	 * Used instead of loading an sprintf (or similar) library.
 	 *
-	 * @private
-	 * @type {string}
 	 * @memberof CssService
 	 */
 	private CSS_CLASS_MATCH_REPLACEABLE = '--1--';
 
 	/**
 	 * Regular expression to find css selectors that match an inserted pattern.
-	 * Inserted pattern is usually a list of class names separated by vertical bars (OR'd together)
+	 * Inserted pattern is usually a list of class names separated by vertical bars (OR'd together).
 	 *
-	 * @private
-	 * @type {string}
 	 * @memberof CssService
 	 */
 	private CSS_CLASS_MATCH: string = '[^,]*\\.(?:' + this.CSS_CLASS_MATCH_REPLACEABLE + ')(?:$|,|(?:\\s|\\.|>|\\[)[^,]*(?:$|,))';
@@ -51,17 +44,13 @@ export class CssService {
 	 * Regular expression to match the class name part of a css selector.
 	 * Contains the character after the class name as the first match group.
 	 *
-	 * @private
-	 * @type {string}
 	 * @memberof CssService
 	 */
 	private CSS_SELECTOR_CLASS_REPLACEMENT: string = '\.(?:' + this.CSS_CLASS_MATCH_REPLACEABLE + ')($|\\s|[.>]|\\[[^\\]]*\\])';
 
 	/**
-	 *	Regular expression to match whitespace and commas at the beginning and end of a string
+	 *	Regular expression to match whitespace and commas at the beginning and end of a string.
 	 *
-	 * @private
-	 * @type {RegExp}
 	 * @memberof CssService
 	 */
 	private OUTER_COMMAS_AND_WHITESPACE: RegExp = /^[,\s\r\n]|[,\s\r\n]$/g;
@@ -69,8 +58,6 @@ export class CssService {
 	/**
 	 * The renderer used to make DOM changes
 	 *
-	 * @private
-	 * @type {Renderer2}
 	 * @memberof CssService
 	 */
 	private renderer: Renderer2;
@@ -78,21 +65,24 @@ export class CssService {
 	/**
 	 * Creates an instance of CssService and instantiates the renderer.
 	 *
-	 * @param {RendererFactory2} rendererFactory
 	 * @memberof CssService
 	 */
-	constructor(rendererFactory: RendererFactory2) {
+	constructor(@Inject(ENVIRONMENT_CODE_HANDLE) environmentCodeHandle: string, rendererFactory: RendererFactory2) {
+		// Set next id to a random number for local testing so multiple app modules don't use the same ids
+		if (environmentCodeHandle === ENVIRONMENT_CODE_HANDLE_LOCAL) {
+			this.nextId = Math.floor(Math.random() * 10000000);
+		} else {
+			this.nextId = 0;
+		}
+
 		this.renderer = rendererFactory.createRenderer(null, null);
 	}
 
 	/**
 	 * Gives the provided element an id if it doesn't currently have one.
 	 * Seems hackish and very unintuitive to have to provide the current id when the element is provided
-	 * but otherwise unsure how to check the id without accessing the nativeElement which is frowned upon
+	 * but otherwise unsure of how to check the id without accessing the nativeElement which is not platform independent.
 	 *
-	 * @param {ElementRef} element
-	 * @param {string} currentId
-	 * @returns {string}
 	 * @memberof CssService
 	 */
 	ensureElementHasId(element: ElementRef, currentId: string): string {
@@ -107,8 +97,6 @@ export class CssService {
 	/**
 	 * Add CSS classes to an element
 	 *
-	 * @param {ElementRef} element
-	 * @param {string[]} cssClassNames
 	 * @memberof CssService
 	 */
 	addCssClasses(element: ElementRef, cssClassNames: string[]): void {
@@ -118,8 +106,6 @@ export class CssService {
 	/**
 	 * Turn a list of class names into an array of class names
 	 *
-	 * @param {string} cssClassNameList
-	 * @returns {string[]}
 	 * @memberof CssService
 	 */
 	parseCssClassList(cssClassNameList: string): string[] {
@@ -129,8 +115,6 @@ export class CssService {
 	/**
 	 * Turn a text version of a css class into an object
 	 *
-	 * @param {string} cssClassText
-	 * @returns {Object}
 	 * @memberof CssService
 	 */
 	parseCssClassProperties(cssClassText: string): Object {
@@ -156,9 +140,6 @@ export class CssService {
 	/**
 	 * Convert a CSSStyleRule object into a CssClass object
 	 *
-	 * @param {CSSStyleRule} cssStyleRule
-	 * @param {string[]} cssClassNames
-	 * @returns {CssClass}
 	 * @memberof CssService
 	 */
 	parseCssStyleRule(cssStyleRule: CSSStyleRule, cssClassNames: string[]): CssClass {
@@ -199,8 +180,6 @@ export class CssService {
 	 * Find all style definitions currently in the document for the provided class names
 	 * excluding style elements that were created by this service.
 	 *
-	 * @param {string[]} cssClassNames
-	 * @returns {CssClass[]}
 	 * @memberof CssService
 	 */
 	findCssClasses(cssClassNames: string[]): CssClass[] {
@@ -263,9 +242,6 @@ export class CssService {
 	 * Swap class names with an element's id for higher priority styles
 	 * This also allows for calling the makeCssClassesImportant and only impacting the element with the provided id.
 	 *
-	 * @param {CssClass[]} cssClasses
-	 * @param {string[]} cssClassNames
-	 * @param {string} id
 	 * @memberof CssService
 	 */
 	replaceCssClassNamesWithId(cssClasses: CssClass[], cssClassNames: string[], id: string) {
@@ -299,9 +275,6 @@ export class CssService {
 	 * Make a new style element with the provided classes and make all properties of those classes have the !important tag.
 	 * Append the new style element to the provided element and return it.
 	 *
-	 * @param {CssClass[]} cssClasses
-	 * @param {ElementRef} appendToElement
-	 * @returns {HTMLStyleElement}
 	 * @memberof CssService
 	 */
 	makeCssClassesImportant(cssClasses: CssClass[], appendToElement: ElementRef): HTMLStyleElement {
@@ -353,7 +326,6 @@ export class CssService {
 	 * Destroy a DOM node
 	 * TODO: move this function somewhere else, it doesn't belong in this service
 	 *
-	 * @param {*} node
 	 * @memberof CssService
 	 */
 	destroyNode(node: any) {

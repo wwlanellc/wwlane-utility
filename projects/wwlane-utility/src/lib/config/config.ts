@@ -1,3 +1,8 @@
 import { InjectionToken } from '@angular/core';
 
 export const DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE = new InjectionToken<string>('DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE');
+
+export const ENVIRONMENT_CODE_HANDLE = new InjectionToken<string>('ENVIRONMENT_CODE_HANDLE');
+export const ENVIRONMENT_CODE_HANDLE_LOCAL = 'LOCAL';
+export const ENVIRONMENT_CODE_HANDLE_DEVELOPMENT = 'DEVELOPMENT';
+export const ENVIRONMENT_CODE_HANDLE_PRODUCTION = 'PRODUCTION';

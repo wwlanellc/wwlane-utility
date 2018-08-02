@@ -3,7 +3,7 @@ import { Component, Input, PipeTransform } from '@angular/core';
 import { ObjectPropertyService } from './object-property.service';
 
 @Component({
-	selector: 'wwl-util-object-property',
+	selector: 'wwl-object-property',
 	templateUrl: './object-property.component.html',
 	styleUrls: ['./object-property.component.css']
 })

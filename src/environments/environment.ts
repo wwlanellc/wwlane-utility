@@ -1,9 +1,11 @@
+import { ENVIRONMENT_CODE_HANDLE_LOCAL } from 'wwlane-utility';
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-	codeHandle: 'LOCAL',
+	codeHandle: ENVIRONMENT_CODE_HANDLE_LOCAL,
 	defaultObjectPropertyUnknownValue: 'DEFAULT_UNKNOWN_VALUE'
 };
 
