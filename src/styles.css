@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+div .billyBob {
+	font-size: 50px;
+}
+
+.billyBob.testClass {
+	font-weight: 800;
+}
+
+.billyBobJoe {
+	padding-left: 100px;
+}
+
+.joebillyBob {
+	padding-right: 200px;
+}
+
+h1.billyBob {
+	height: 300px;
+}
+
+div.billyBob {
+	width: 3000px;
+}
+
+.blarg.billyBob {
+	float: right;
+	text-align: right;
+}
+
+.smarmy * {
+	color: teal;
+}
+
+@media screen and (max-width: 1500px) {
+	.smarmy * {
+		color: red;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.smarmy * {
+		color: blue;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.smarmy * {
+		color: seagreen;
+	}
+}

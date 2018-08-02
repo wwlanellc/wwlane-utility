@@ -25,5 +25,12 @@
 				"dist/wwlane-utility/*"
 			]
 		}
-	}
+	},
+	"include": [
+		"src/**/*",
+		"projects/wwlane-utility/src/lib/wwlane-utility.module.ts"
+	  ],
+	  "exclude": [
+		"src/**/*.spec.ts"
+	  ]
 }

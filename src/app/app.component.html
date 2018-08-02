@@ -1,7 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-	<h1>
-		Welcome to {{ title }}!
-	</h1>
+<div class="outer">
+	<div style="text-align:center">
+		<h1 id="testHeader" wwlUtilImportantClass="testClass billyBob">
+			<span>Welcome to <span wwlUtilImportantClass="joebillyBob">{{ title }}</span>!</span>
+			<span id="fred">&nbsp;</span>
+		</h1>
+	</div>
+	<div>
+		<wwl-util-object-property wwlUtilImportantClass="smarmy testClass" [wwlObject]="myObj" wwlPropertyName="myProperty.myPropertyName" [wwlPipe]="myPipe" [wwlPipeParameters]="myPipeAtts" wwlUnknownValue="SuckaNut"></wwl-util-object-property>
+	</div>
 </div>
-<wwl-util-object-property [wwlObject]="myObj" wwlPropertyName="myProperty.myPropertyName"></wwl-util-object-property>
+<br>
