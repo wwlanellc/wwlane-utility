@@ -1,28 +1,41 @@
-import { NgModule, InjectionToken } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 
-import { DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE } from './config';
-import { ObjectPropertyComponent } from './object-property/object-property.component';
-import { LoadingIfDirective } from './loading-if.directive';
 import { WwLaneCoreUtilityModule } from 'wwlane-core-utility';
+
+import { DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE } from './config/config';
+
+import { LoadingIfDirective } from './directive/loading-if.directive';
+import { ImportantClassDirective } from './directive/important-class.directive';
+
+import { ObjectPropertyComponent } from './object/property/object-property.component';
+
+import { ObjectPropertyService } from './object/property/object-property.service';
+import { CssService } from './style/css/css.service';
 
 @NgModule({
 	imports: [
+		CommonModule,
 		WwLaneCoreUtilityModule
 	],
 	declarations: [
-		ObjectPropertyComponent,
-		LoadingIfDirective
+		LoadingIfDirective,
+		ImportantClassDirective,
+		ObjectPropertyComponent
 	],
 	exports: [
-		ObjectPropertyComponent,
-		LoadingIfDirective
+		LoadingIfDirective,
+		ImportantClassDirective,
+		ObjectPropertyComponent
 	]
 })
 export class WwLaneUtilityModule {
-	static forRoot(environment) {
+	static forRoot(environment): ModuleWithProviders {
 		return {
 			ngModule: WwLaneUtilityModule,
 			providers: [
+				ObjectPropertyService,
+				CssService,
 				{
 					provide: DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE,
 					useValue: environment.defaultObjectPropertyUnknownValue
