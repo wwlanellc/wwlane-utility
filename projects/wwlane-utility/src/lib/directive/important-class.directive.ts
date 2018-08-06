@@ -1,33 +1,43 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, OnChanges } from '@angular/core';
 
-import { CssClass } from '../style/css/css-class';
+import { ElementService } from '../element/element.service';
 import { CssService } from '../style/css/css.service';
+import { CssClass } from '../style/css/css-class';
 
 
 @Directive({
 	selector: '[wwlImportantClass]',
 })
-export class ImportantClassDirective implements OnInit {
+export class ImportantClassDirective implements OnChanges {
 	@Input() id?: string;
-	@Input() wwlImportantClass: string;
+	@Input() wwlImportantClass: string | string[];
 	styleNode: HTMLStyleElement;
+	classList: string;
 
-	constructor(private element: ElementRef, private cssService: CssService) {
+	constructor(private element: ElementRef, private elementService: ElementService, private cssService: CssService) {
 		this.styleNode = null;
 	}
 
-	ngOnInit() {
-		this.id = this.cssService.ensureElementHasId(this.element, this.id);
+	ngOnChanges() {
+		this.id = this.elementService.ensureElementHasId(this.element, this.id);
+		const newClassList = Array.isArray(this.wwlImportantClass) ? this.wwlImportantClass.join(' ') : this.wwlImportantClass;
 
-		const importantClassNames: string[] = this.cssService.parseCssClassList(this.wwlImportantClass);
+		if (newClassList !== this.classList) {
+			this.classList = newClassList;
+
+			this.refreshStyles();
+		}
+	}
+
+	refreshStyles(): void {
+		const importantClassNames: string[] = this.cssService.parseCssClassList(this.classList);
 
 		const cssClasses: CssClass[] = this.cssService.findCssClasses(importantClassNames);
 
 		this.cssService.replaceCssClassNamesWithId(cssClasses, importantClassNames, this.id);
 
-		// TODO: Make this useful by re-applying style overrides on DOM changes
 		if (this.styleNode !== null) {
-			this.cssService.destroyNode(this.styleNode);
+			this.elementService.destroyElement(new ElementRef(this.styleNode), this.element);
 
 			this.styleNode = null;
 		}

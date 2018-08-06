@@ -1,7 +1,8 @@
 import { Injectable, ElementRef, Renderer2, RendererFactory2, Inject } from '@angular/core';
 
-import { CssClass } from './css-class';
 import { ENVIRONMENT_CODE_HANDLE, ENVIRONMENT_CODE_HANDLE_LOCAL } from '../../config/config';
+
+import { CssClass } from './css-class';
 
 /**
  * Service which contains functions related to Cascading Style Sheets
@@ -30,6 +31,7 @@ export class CssService {
 	 * Replacement string used to do replacements in Regular Expressions.
 	 * Used instead of loading an sprintf (or similar) library.
 	 *
+	 * @constant
 	 * @memberof CssService
 	 */
 	private CSS_CLASS_MATCH_REPLACEABLE = '--1--';
@@ -38,6 +40,7 @@ export class CssService {
 	 * Regular expression to find css selectors that match an inserted pattern.
 	 * Inserted pattern is usually a list of class names separated by vertical bars (OR'd together).
 	 *
+	 * @constant
 	 * @memberof CssService
 	 */
 	private CSS_CLASS_MATCH: string = '[^,]*\\.(?:' + this.CSS_CLASS_MATCH_REPLACEABLE + ')(?:$|,|(?:\\s|\\.|>|\\[)[^,]*(?:$|,))';
@@ -46,6 +49,7 @@ export class CssService {
 	 * Regular expression to match the class name part of a css selector.
 	 * Contains the character after the class name as the first match group.
 	 *
+	 * @constant
 	 * @memberof CssService
 	 */
 	private CSS_SELECTOR_CLASS_REPLACEMENT: string = '\.(?:' + this.CSS_CLASS_MATCH_REPLACEABLE + ')($|\\s|[.>]|\\[[^\\]]*\\])';
@@ -53,6 +57,7 @@ export class CssService {
 	/**
 	 *	Regular expression to match whitespace and commas at the beginning and end of a string.
 	 *
+	 * @constant
 	 * @memberof CssService
 	 */
 	private OUTER_COMMAS_AND_WHITESPACE: RegExp = /^[,\s\r\n]|[,\s\r\n]$/g;
@@ -78,22 +83,6 @@ export class CssService {
 		}
 
 		this.renderer = rendererFactory.createRenderer(null, null);
-	}
-
-	/**
-	 * Gives the provided element an id if it doesn't currently have one.
-	 * Seems hackish and very unintuitive to have to provide the current id when the element is provided
-	 * but otherwise unsure of how to check the id without accessing the nativeElement which is not platform independent.
-	 *
-	 * @memberof CssService
-	 */
-	ensureElementHasId(element: ElementRef, currentId: string): string {
-		if (currentId === undefined) {
-			currentId = this.ID_PREFIX + this.nextId++;
-			this.renderer.setAttribute(element.nativeElement, 'id', currentId);
-		}
-
-		return currentId;
 	}
 
 	/**
@@ -322,15 +311,5 @@ export class CssService {
 		this.renderer.appendChild(appendToElement.nativeElement, styleNode);
 
 		return styleNode;
-	}
-
-	/**
-	 * Destroy a DOM node
-	 * TODO: move this function somewhere else, it doesn't belong in this service
-	 *
-	 * @memberof CssService
-	 */
-	destroyNode(node: any) {
-		this.renderer.destroyNode(node);
 	}
 }
