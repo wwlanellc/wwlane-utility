@@ -13,13 +13,14 @@ export class ObjectPropertyComponent implements OnChanges {
 	@Input() wwlPipe?: PipeTransform;
 	@Input() wwlPipeParameters?: Object[];
 	@Input() wwlUnknownValue?: string;
+	@Input() wwlArrayAsUnknown?: string | boolean;
 
 	private currentValue: Object;
 
 	constructor(private objectPropertyService: ObjectPropertyService) { }
 
 	ngOnChanges() {
-		this.currentValue = this.objectPropertyService.retrievePropertyByName(this.wwlObject, this.wwlPropertyName, this.wwlUnknownValue, this.wwlPipe, this.wwlPipeParameters);
+		this.currentValue = this.objectPropertyService.retrievePropertyByName(this.wwlObject, this.wwlPropertyName, this.wwlUnknownValue, this.wwlPipe, this.wwlPipeParameters, this.treatArrayAsUnknown());
 	}
 
 	getValue(): Object {
@@ -28,5 +29,9 @@ export class ObjectPropertyComponent implements OnChanges {
 
 	valueIsArray(): boolean {
 		return Array.isArray(this.currentValue);
+	}
+
+	treatArrayAsUnknown(): boolean {
+		return (this.wwlArrayAsUnknown === true || this.wwlArrayAsUnknown === 'true' || this.wwlArrayAsUnknown === '');
 	}
 }

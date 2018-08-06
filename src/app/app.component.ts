@@ -25,9 +25,12 @@ export class AppComponent implements OnInit {
 	};
 	myPipe: CurrencyPipe;
 	myPipeAtts: string[];
-	myImportantClasses: string[] = ['smarmy', 'testClass'];
+	myImportantClasses: string[];
+	unknownArray: boolean;
 
 	constructor(objectPropertyService: ObjectPropertyService) {
+		this.unknownArray = false;
+
 		objectPropertyService.setDefaultUnknownValue('blah');
 
 		this.myImportantClasses = [];
