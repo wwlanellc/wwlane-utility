@@ -29,7 +29,7 @@ export class UncompiledAppComponent implements OnInit {
 
 	constructor() {
 		this.unknownArray = false;
-console.log('this.unknownArray: ', this.unknownArray);
+
 		this.myImportantClasses = [];
 		this.myImportantClasses.push('smarmy');
 		this.myImportantClasses.push('testClass');
