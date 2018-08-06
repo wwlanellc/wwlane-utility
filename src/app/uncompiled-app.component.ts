@@ -24,8 +24,18 @@ export class UncompiledAppComponent implements OnInit {
 	};
 	myPipe: CurrencyPipe;
 	myPipeAtts: string[];
+	myImportantClasses: string[];
 
-	constructor() { }
+	constructor() {
+		this.myImportantClasses = [];
+		this.myImportantClasses.push('smarmy');
+		this.myImportantClasses.push('testClass');
+
+		setTimeout (() => {
+			this.myImportantClasses = [];
+			this.myImportantClasses.push('testClass');
+		}, 5000);
+	}
 
 	ngOnInit(): void {
 		this.myPipe = new CurrencyPipe('en-US');

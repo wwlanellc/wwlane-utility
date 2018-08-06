@@ -25,10 +25,14 @@ export class AppComponent implements OnInit {
 	};
 	myPipe: CurrencyPipe;
 	myPipeAtts: string[];
+	myImportantClasses: string[] = ['smarmy', 'testClass'];
 
 	constructor(objectPropertyService: ObjectPropertyService) {
 		objectPropertyService.setDefaultUnknownValue('blah');
 
+		this.myImportantClasses = [];
+		this.myImportantClasses.push('smarmy');
+		this.myImportantClasses.push('testClass');
 	}
 
 	ngOnInit(): void {
