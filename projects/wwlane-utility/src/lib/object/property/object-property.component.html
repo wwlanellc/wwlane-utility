@@ -1,4 +1,4 @@
 <div *ngIf="!valueIsArray()">{{getValue()}}</div>
 <ul *ngIf="valueIsArray()">
-	<li class="blahbiblah" *ngFor="let item of getValue()">{{item}}</li>
+	<li *ngFor="let item of getValue()">{{item}}</li>
 </ul>
