@@ -1,9 +1,12 @@
 import { Injectable, PipeTransform, Inject } from '@angular/core';
 
 import { ObjectPropertyService as CoreObjectPropertyService } from 'wwlane-core-utility';
+import { WwLaneUtilityModule } from './../../wwlane-utility.module';
 import { DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE } from '../../config/config';
 
-@Injectable()
+@Injectable({
+	providedIn: 'root'
+})
 export class ObjectPropertyService {
 	private defaultUnknownValue = 'Unknown';
 
@@ -20,8 +23,8 @@ export class ObjectPropertyService {
 	private modifyValueForDisplay(value: Object | string, unknownValue?: string, pipe?: PipeTransform, additionalPipeArguments?: Object[]): Object | string {
 		if (!this.isAccessible(value)) {
 		// 	value = value.getDisplayValue();
-		} else if (value === null) {
-			value = (unknownValue === undefined) ? this.defaultUnknownValue : unknownValue;
+		} else if (value === null || value === undefined) {
+			value = (unknownValue === undefined ? this.defaultUnknownValue : unknownValue);
 		} else if (pipe !== undefined) {
 			let pipeArguments = null;
 

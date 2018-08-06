@@ -1,3 +1,4 @@
+import { ObjectPropertyService } from 'wwlane-utility';
 import { Component, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
@@ -25,7 +26,10 @@ export class AppComponent implements OnInit {
 	myPipe: CurrencyPipe;
 	myPipeAtts: string[];
 
-	constructor() { }
+	constructor(objectPropertyService: ObjectPropertyService) {
+		objectPropertyService.setDefaultUnknownValue('blah');
+
+	}
 
 	ngOnInit(): void {
 		this.myPipe = new CurrencyPipe('en-US');

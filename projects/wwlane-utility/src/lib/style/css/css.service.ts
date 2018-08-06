@@ -8,7 +8,9 @@ import { ENVIRONMENT_CODE_HANDLE, ENVIRONMENT_CODE_HANDLE_LOCAL } from '../../co
  *
  * @export
  */
-@Injectable()
+@Injectable({
+	providedIn: 'root'
+})
 export class CssService {
 	/**
 	 * A counter to ensure any new ids assigned to elements are unique

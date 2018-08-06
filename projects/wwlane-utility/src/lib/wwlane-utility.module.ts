@@ -10,9 +10,6 @@ import { ImportantClassDirective } from './directive/important-class.directive';
 
 import { ObjectPropertyComponent } from './object/property/object-property.component';
 
-import { ObjectPropertyService } from './object/property/object-property.service';
-import { CssService } from './style/css/css.service';
-
 @NgModule({
 	imports: [
 		CommonModule,
@@ -34,8 +31,6 @@ export class WwLaneUtilityModule {
 		return {
 			ngModule: WwLaneUtilityModule,
 			providers: [
-				ObjectPropertyService,
-				CssService,
 				{
 					provide: DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE,
 					useValue: environment.defaultObjectPropertyUnknownValue
