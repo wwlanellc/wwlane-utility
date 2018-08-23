@@ -1,0 +1,65 @@
+:host.wwlLoadingIfCenter > span {
+	display: block;
+	text-align: center;
+}
+
+span {
+	fill: #000;
+}
+
+.wwlLoadingIfCircle1 {
+	fill-opacity: 0.875;
+}
+
+.wwlLoadingIfCircle2 {
+	fill-opacity: 0.75;
+}
+
+.wwlLoadingIfCircle3 {
+	fill-opacity: 0.625;
+}
+
+.wwlLoadingIfCircle4 {
+	fill-opacity: 0.5;
+}
+
+.wwlLoadingIfCircle5 {
+	fill-opacity: 0.375;
+}
+
+.wwlLoadingIfCircle6 {
+	fill-opacity: 0.25;
+}
+
+.wwlLoadingIfCircle7 {
+	fill-opacity: 0.125;
+}
+
+svg {
+	height: 1rem;
+	width: 1rem;
+	-webkit-animation: spin 1s infinite linear;
+	animation: spin 1s infinite linear;
+}
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg);
+	}
+}

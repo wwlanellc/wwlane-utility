@@ -9,6 +9,8 @@ import { LoadingIfDirective } from './directive/loading-if.directive';
 import { ImportantClassDirective } from './directive/important-class.directive';
 
 import { ObjectPropertyComponent } from './object/property/object-property.component';
+import { ObjectPropertyPipe } from './object/property/object-property.pipe';
+import { LoadingDefaultComponent } from './element/loading-default/loading-default.component';
 
 @NgModule({
 	imports: [
@@ -18,12 +20,18 @@ import { ObjectPropertyComponent } from './object/property/object-property.compo
 	declarations: [
 		LoadingIfDirective,
 		ImportantClassDirective,
-		ObjectPropertyComponent
+		ObjectPropertyComponent,
+		ObjectPropertyPipe,
+		LoadingDefaultComponent
 	],
 	exports: [
 		LoadingIfDirective,
 		ImportantClassDirective,
-		ObjectPropertyComponent
+		ObjectPropertyComponent,
+		ObjectPropertyPipe
+	],
+	entryComponents: [
+		LoadingDefaultComponent
 	]
 })
 export class WwLaneUtilityModule {

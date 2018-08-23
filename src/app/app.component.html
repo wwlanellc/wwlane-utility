@@ -8,5 +8,34 @@
 	<div>
 		<wwl-object-property [wwlArrayAsUnknown]="unknownArray" [wwlImportantClass]="myImportantClasses" [wwlObject]="myObj" wwlPropertyName="myProperty.myPropertyName" [wwlPipe]="myPipe" [wwlPipeParameters]="myPipeAtts" wwlUnknownValue="OverriddenUnknownValue"></wwl-object-property>
 	</div>
+	<div>
+		<p>{{myObj | wwlObjectProperty: 'myProperty[0].myPropertyName' : 'UNKNOWN VALUE'}}</p>
+	</div>
+	<div *wwlLoadingIf="returnFalse() || myFunc()"><p>LOAD ME</p></div>
+
+	<div *wwlLoadingIf="blah"><p>Observable loaded</p></div>
+	<hr>
+	<table *wwlLoadingIf="returnFalse() || myFunc()">
+		<tr>
+			<th>Header 1</th>
+			<th>Header 2</th>
+		</tr>
+		<tr *wwlLoadingIf="blah">
+			<td>data 1, 1</td>
+			<td>data 1, 2</td>
+		</tr>
+		<tr>
+			<td>data 2, 1</td>
+			<td *wwlLoadingIf="myObservable; center false">data 2, 2</td>
+		</tr>
+		<tr>
+			<td><span *wwlLoadingIf="myObservable">data 3, 1</span></td>
+			<td>data 3, 2</td>
+		</tr>
+		<tr>
+			<td *ngFor="let data of myImportantClasses">{{data}}</td>
+		</tr>
+	</table>
+	<hr>
 </div>
 <br>
