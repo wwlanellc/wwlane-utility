@@ -5,7 +5,7 @@ import { ObjectPropertyService } from './object-property.service';
 @Component({
 	selector: 'wwl-object-property',
 	templateUrl: './object-property.component.html',
-	styleUrls: ['./object-property.component.css']
+	styleUrls: ['./object-property.component.scss']
 })
 export class ObjectPropertyComponent implements OnChanges {
 	@Input() wwlObject: Object;

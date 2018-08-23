@@ -3,7 +3,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import { UncompiledAppModule } from './app/uncompiled-app.module';
 
 if (environment.codeHandle === 'PRODUCTION') {
 	enableProdMode();
@@ -11,7 +10,3 @@ if (environment.codeHandle === 'PRODUCTION') {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
 	.catch(err => console.log(err));
-
-
-platformBrowserDynamic().bootstrapModule(UncompiledAppModule)
-.catch(err => console.log(err));

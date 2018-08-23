@@ -1,0 +1,23 @@
+#testHeader {
+	background-color: aqua;
+}
+
+.testClass {
+	background-color: yellow;
+}
+
+.outer {
+	border:2px solid black;
+}
+
+table {
+	border: 5px solid black;
+}
+
+tr:nth-child(even) {
+	background-color: lightgoldenrodyellow;
+}
+
+th, td {
+	border: 1px dotted black;
+}

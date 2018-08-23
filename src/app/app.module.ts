@@ -2,8 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 
-import { WwLaneCoreUtilityModule } from 'wwlane-core-utility';
-import { WwLaneUtilityModule } from 'wwlane-utility';
+import { WwLaneUtilityModule } from '../../projects/wwlane-utility/src/lib/wwlane-utility.module';
 
 import { AppComponent } from './app.component';
 
