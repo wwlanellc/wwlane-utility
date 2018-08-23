@@ -28,7 +28,7 @@
 		"@angular/router": "^6.1.0",
 		"core-js": "^2.5.4",
 		"rxjs": "^6.0.0",
-		"wwlane-core-utility": "file:../wwlane-core-utility/dist/wwlane-core-utility/wwlane-core-utility-0.0.1.tgz",
+		"wwlane-core-utility": "^0.0.1",
 		"wwlane-utility": "file:dist/wwlane-utility/wwlane-utility-0.0.1.tgz",
 		"zone.js": "~0.8.26"
 	},
