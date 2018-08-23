@@ -37,7 +37,7 @@ export class ImportantClassDirective implements OnChanges {
 		this.cssService.replaceCssClassNamesWithId(cssClasses, importantClassNames, this.id);
 
 		if (this.styleNode !== null) {
-			this.elementService.destroyElement(new ElementRef(this.styleNode), this.element);
+			this.elementService.destroyElement(new ElementRef(this.styleNode));
 
 			this.styleNode = null;
 		}

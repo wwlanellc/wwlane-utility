@@ -1,9 +1,18 @@
+/**
+ * Object for representing a Cascading Style Sheet class
+ *
+ * @export
+ */
 export class CssClass {
 	public selectors: string[];
 	public properties: Object;
 	public mediaQueryCondition: string;
-
-	constructor(selectors?: string[], properties?: Object, mediaQueryCondition?: string) {
+/**
+ * Creates an instance of {@link CssClass}.
+ *
+ * @memberof CssClass
+ */
+constructor(selectors?: string[], properties?: Object, mediaQueryCondition?: string) {
 		if (selectors === undefined) {
 			this.selectors = [];
 		} else {

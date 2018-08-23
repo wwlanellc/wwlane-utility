@@ -21,7 +21,7 @@ export class CssService {
 	private nextId: number;
 
 	/**
-	 * Combined with nextId variable
+	 * Combined with [nextId]{@link CssService#nextId} variable
 	 *
 	 * @memberof CssService
 	 */
@@ -70,7 +70,7 @@ export class CssService {
 	private renderer: Renderer2;
 
 	/**
-	 * Creates an instance of CssService and instantiates the renderer.
+	 * Creates an instance of {@link CssService} and instantiates the [renderer]{@link CssService#renderer}.
 	 *
 	 * @memberof CssService
 	 */
@@ -129,7 +129,7 @@ export class CssService {
 	}
 
 	/**
-	 * Convert a CSSStyleRule object into a CssClass object
+	 * Convert a CSSStyleRule object into a {@link CssClass} object
 	 *
 	 * @memberof CssService
 	 */
@@ -231,7 +231,7 @@ export class CssService {
 
 	/**
 	 * Swap class names with an element's id for higher priority styles
-	 * This also allows for calling the makeCssClassesImportant and only impacting the element with the provided id.
+	 * This also allows for calling the [makeCssClassesImportant]{@link CssService#makeCssClassesImportant} and only impacting the element with the provided id.
 	 *
 	 * @memberof CssService
 	 */

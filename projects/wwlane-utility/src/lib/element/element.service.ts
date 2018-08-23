@@ -2,6 +2,11 @@ import { Injectable, RendererFactory2, Renderer2, Inject, ElementRef } from '@an
 
 import { ENVIRONMENT_CODE_HANDLE, ENVIRONMENT_CODE_HANDLE_LOCAL } from './../config/config';
 
+/**
+ * Service for manipulating DOM Elements
+ *
+ * @export
+ */
 @Injectable({
 	providedIn: 'root'
 })
@@ -14,8 +19,9 @@ export class ElementService {
 	private nextId: number;
 
 	/**
-	 * Combined with nextId variable to ensure any new ids assigned to elements are unique
+	 * Combined with [nextId]{@link ElementService#nextId} variable to ensure any new ids assigned to elements are unique
 	 *
+	 * @constant
 	 * @memberof ElementService
 	 */
 	private ID_PREFIX = 'wwlElement_';
@@ -28,7 +34,7 @@ export class ElementService {
 	private renderer: Renderer2;
 
 	/**
-	 * Creates an instance of ElementService and instantiates the renderer.
+	 * Creates an instance of {@link ElementService} and instantiates the [renderer]{@link ElementService#renderer}.
 	 *
 	 * @memberof ElementService
 	 */
@@ -45,8 +51,9 @@ export class ElementService {
 
 	/**
 	 * Gives the provided element an id if it doesn't currently have one.
-	 * Seems hackish and very unintuitive to have to provide the current id when the element is provided
-	 * but otherwise unsure of how to check the id without accessing the nativeElement which is not platform independent.
+	 * Seems hackish and very unintuitive to have to provide the current id when the element
+	 * is provided but otherwise unsure of how to check the id without accessing the
+	 * nativeElement which is strongly advised against.
 	 *
 	 * @memberof ElementService
 	 */
@@ -60,13 +67,11 @@ export class ElementService {
 	}
 
 	/**
-	 * Destroy a DOM node. Could use element.nativeElement.parent for parent but accessing
-	 * nativeElement properties is strongly advised against.
+	 * Destroy a DOM node.
 	 *
 	 * @memberof ElementService
 	 */
-	destroyElement(element: ElementRef, parentElement: ElementRef) {
-		this.renderer.removeChild(parentElement.nativeElement, element.nativeElement);
+	destroyElement(element: ElementRef) {
+		this.renderer.removeChild(this.renderer.parentNode(element.nativeElement), element.nativeElement);
 	}
-
 }

@@ -4,7 +4,7 @@ import { ObjectPropertyService as CoreObjectPropertyService } from 'wwlane-core-
 import { DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE } from '../../config/config';
 
 /**
- * Service which contains functions to retrieve displayable property information from objects
+ * Service which contains functions to retrieve displayable property information from objects.
  *
  * @export
  */
@@ -14,7 +14,7 @@ import { DEFAULT_OBJECT_PROPERTY_UNKNOWN_VALUE } from '../../config/config';
 export class ObjectPropertyService {
 	/**
 	 * The value to use if a requested property is not accessible due to null or undefined values.
-	 * Can be overridden by global configuration, by calling the setDefaultUknownValue function or
+	 * Can be overridden by global configuration, by calling the [setDefaultUnknownValue]{@link ObjectPropertyService#setDefaultUnknownValue} function or
 	 * by passing an unknownValue to one of the service's methods.
 	 *
 	 * @memberof ObjectPropertyService
@@ -22,9 +22,9 @@ export class ObjectPropertyService {
 	private defaultUnknownValue = 'Unknown';
 
 	/**
-	 * Creates an instance of ObjectPropertyService,
+	 * Creates an instance of {@link ObjectPropertyService},
 	 * sets the default unknown value if it was set in the environment variables,
-	 * and instantiates the core object property service.
+	 * and retrieves the core object property service instance.
 	 *
 	 * @memberof ObjectPropertyService
 	 */
@@ -35,7 +35,7 @@ export class ObjectPropertyService {
 	}
 
 	/**
-	 * Sets the fallback value to use if a requested property is not accessible due to null or undefined values.
+	 * Sets the fallback value ([defaultUnknownValue]{@link ObjectPropertyService#defaultUnknownValue}) to use if a requested property is not accessible due to null or undefined values.
 	 *
 	 * @memberof ObjectPropertyService
 	 */
@@ -45,7 +45,7 @@ export class ObjectPropertyService {
 
 	/**
 	 * Prepares a value for display by replacing nulls and undefineds with the provided unknownValue or
-	 * {@link ObjectPropertyService#defaultUnknownValue} if the unknownValue was not provided and then passes
+	 * [defaultUnknownValue]{@link ObjectPropertyService#defaultUnknownValue} if the unknownValue was not provided and then passes
 	 * the value through the provided pipe if one was provided.
 	 *
 	 * @memberof ObjectPropertyService
@@ -74,7 +74,7 @@ export class ObjectPropertyService {
 	}
 
 	/**
-	 * Prepares a array's values for displaying by utilizing {@link ObjectPropertyService#prepareValueForDisplay} for each element.
+	 * Prepares a array's values for displaying by utilizing [prepareValueForDisplay]{@link ObjectPropertyService#prepareValueForDisplay} for each element.
 	 * If the treatArrayAsUnknown parameter is passed and true then it returns the unknown value instead of an array.
 	 *
 	 * @memberof ObjectPropertyService
@@ -96,7 +96,7 @@ export class ObjectPropertyService {
 	}
 
 	/**
-	 * Wrapper for the core retrievePropertyByName method. Passes the result off to {@link ObjectPropertyService#prepareValuesForDisplay} or {@link ObjectPropertyService#prepareValueForDisplay}.
+	 * Wrapper for the core retrievePropertyByName method. Passes the result off to [prepareValueForDisplay]{@link ObjectPropertyService#prepareValueForDisplay} or [prepareValuesForDisplay]{@link ObjectPropertyService#prepareValuesForDisplay}.
 	 *
 	 * @memberof ObjectPropertyService
 	 */
